@@ -1,4 +1,8 @@
-const livros = [25,15,30,50,45,20]
+
+const livros = require('./listaLivros')
+
+let precosLivros = []
+livros.forEach(livro => precosLivros.push(livro.preco))
 
 //Destrói o original
 let sortByLowestVal = (arr)=>{
@@ -82,6 +86,6 @@ recursiveSortByLowestVal = (arrOriginal, count = 0)=>{
 }
 
 console.clear()
+console.log(precosLivros)
 // console.log(sortByLowestVal(livros))
-console.log(recursiveSortByLowestVal(livros))
-console.log(livros)
+console.log(recursiveSortByLowestVal(precosLivros))
