@@ -20,7 +20,7 @@ readFile = async(path)=>{
         const encoding = 'utf-8'  
         const file_text = await fs.promises.readFile(path, encoding)
 
-        console.log(extractLinks(await file_text))
+       return extractLinks(await file_text)
     }catch(error){
         handleError(error)
     } finally{
@@ -43,7 +43,7 @@ const extractLinks = (text)=>{
 
     const results = matches.map(match => ({[match[1]] : match[2]}))
 
-    return results
+    return (results.length > 0) ? results : 'Não há links no arquivo'
 }
 
 export default readFile
