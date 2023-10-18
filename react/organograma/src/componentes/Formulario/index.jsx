@@ -20,6 +20,11 @@ const Formulario = ({aoCadastrarColaborador, times}) =>{
             imagem,
             time
         })
+
+        setNome('')
+        setCargo('')
+        setImagem('')
+        setTime('')
     }
 
     return(
