@@ -19,7 +19,7 @@ function App() {
     'UX e Design',
     'Mobile',
     'Inovação e Gestão'
-]
+  ]
 
   return (
     <>
