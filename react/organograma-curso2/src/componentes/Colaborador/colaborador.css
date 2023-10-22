@@ -49,3 +49,14 @@
 .colaborador .deletar:hover{
     scale: 1.15;
 }
+
+.favoritar{
+    margin-top: 20px;
+
+    transition: 100ms ease-out;
+    cursor: pointer;
+}
+
+.favoritar:hover{
+    transform: scale(1.2);
+}
