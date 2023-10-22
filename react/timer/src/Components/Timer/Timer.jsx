@@ -1,6 +1,7 @@
 // Critérios de aceite:
-// - Baseado em timer global
+// - Baseado em Date()
 // - Possibilidade de pausar
+// - Quando atualiza o initialTime reseta o timer
 
 import { useEffect, useRef, useState } from "react"
 
