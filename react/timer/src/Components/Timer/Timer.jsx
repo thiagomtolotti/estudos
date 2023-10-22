@@ -8,6 +8,7 @@ const Timer = ( { initialTime, paused } ) => {
     const initialTimestamp = useRef()
     const timer = useRef()
     const remainTime = useRef(initialTime)
+    
     const [time, setTime] = useState(initialTime)
     
     useEffect(()=>{
@@ -46,14 +47,12 @@ const Timer = ( { initialTime, paused } ) => {
 
     // Recebe o tempo em segundos e formata em mm:ss
     const formatTime = (time) =>{
-        const minutes = Math.floor(time / 60)
-        const seconds = time % 60
+        const formatZeros = (time) => (time < 10) ? ('0' + time) : time
 
-        const formatZeros = (time) => {
-            return (time < 10) ? ('0' + time) : time
-        }
+        const minutes = formatZeros(Math.floor(time / 60))
+        const seconds = formatZeros(time % 60)
 
-        return `${formatZeros(minutes)} : ${formatZeros(seconds)}`
+        return `${minutes} : ${seconds}`
     }
 
     return formatTime(time)
