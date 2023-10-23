@@ -1,4 +1,5 @@
 import Menu from './componentes/Menu'
+import Rodape from './componentes/Rodape'
 import Inicio from './paginas/Inicio'
 import SobreMim from './paginas/SobreMim'
 
@@ -14,6 +15,8 @@ function AppRoutes() {
         <Route  path='/sobremim' element={<SobreMim />} />
         <Route  path="*" element={<div>Página não encontrada</div>} />
       </Routes>
+
+	  <Rodape />
     </BrowserRouter>
   )
 }
