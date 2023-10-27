@@ -1,11 +1,11 @@
 import styles from './PostModelo.module.css'
 
-const PostModelo = ({fotoCapa, titulo, children}) => {
+const PostModelo = ({FotoCapa, titulo, children}) => {
 	return(
 		<article className={styles.postModeloContainer}>
 			<div
 				className={styles.fotoCapa}
-				style={{ backgroundImage: `url:(${fotoCapa})` }}
+				style={{backgroundImage: `url(${FotoCapa})`}}
 			>
 			</div>
 			
