@@ -2,4 +2,7 @@
   "typeAcquisition": {
     "include": ["jest"]
   }
+  // "compilerOptions": {
+  //   "module": "ES2020"
+  // }
 }
