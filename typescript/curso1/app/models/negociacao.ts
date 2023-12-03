@@ -1,23 +1,17 @@
 export class Negociacao {
   constructor(
     private _data: Date,
-    private _quantidade: number,
-    private _valor: number
+    public readonly quantidade: number,
+    public readonly valor: number
   ) {}
 
+  // Programação defensiva - Cria uma cópia da data para evitar que seja sobrescrita
   get data() {
-    return this._data;
-  }
-
-  get quantidade() {
-    return this._quantidade;
-  }
-
-  get valor() {
-    return this._valor;
+    const data = new Date(this._data.getTime());
+    return data;
   }
 
   get volume() {
-    return this._quantidade * this._valor;
+    return this.quantidade * this.valor;
   }
 }
