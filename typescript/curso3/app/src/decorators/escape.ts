@@ -1,22 +1,23 @@
 export function escape(
-	target: any,
-	propertyKey: string,
-	descriptor: PropertyDescriptor
+  target: any,
+  propertyKey: string,
+  descriptor: PropertyDescriptor
 ) {
-	const metodoOriginal = descriptor.value;
+  const metodoOriginal = descriptor.value;
 
-	descriptor.value = function (...args: any[]) {
-		let retorno = metodoOriginal.apply(this, args);
+  descriptor.value = function (...args: any[]) {
+    let retorno = metodoOriginal.apply(this, args);
 
-		if (typeof retorno === "string") {
+    if (typeof retorno === "string") {
+      /*
 			console.log(
 				`@escape em ação na classe ${this.constructor.name} para o método ${propertyKey}`
-			);
-			retorno = retorno.replace(/<script>[\s\S]*?<\/script>/, "");
-		}
+			);*/
+      retorno = retorno.replace(/<script>[\s\S]*?<\/script>/, "");
+    }
 
-		return retorno;
-	};
+    return retorno;
+  };
 
-	return descriptor;
+  return descriptor;
 }
