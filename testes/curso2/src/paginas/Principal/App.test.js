@@ -35,4 +35,19 @@ describe('App', () => {
     const tituloPaginaCartoes = await screen.findByText('Meus cartões');
     expect(tituloPaginaCartoes).toBeInTheDocument();
   });
+
+  test('Deve navegar até a página de Investimentos quando clicar no link', async () => {
+    render(<AppRoutes />, { wrapper: BrowserRouter });
+
+    const linkPaginaInvestimentos = screen.getByText('Investimentos');
+
+    expect(linkPaginaInvestimentos).toBeInTheDocument();
+
+    userEvent.click(linkPaginaInvestimentos);
+
+    const localizacaoAtual = screen.getByTestId('local');
+    const rota = '/investimentos';
+
+    expect(localizacaoAtual).toHaveTextContent(rota);
+  });
 });
