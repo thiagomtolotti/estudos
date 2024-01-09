@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
+import AppRoutes from '../../routes';
 
 describe('App', () => {
   // Teste de integração entre componentes
@@ -20,5 +21,18 @@ describe('App', () => {
     const itemExtrato = screen.getByRole('listitem');
 
     expect(novaTransacao).toContainElement(itemExtrato);
+  });
+
+  test('Deve navegar até a página correspondente ao link clicado', async () => {
+    render(<AppRoutes />, { wrapper: BrowserRouter });
+
+    const linkPaginaCartoes = screen.getByText('Cartões');
+
+    expect(linkPaginaCartoes).toBeInTheDocument();
+
+    userEvent.click(linkPaginaCartoes);
+
+    const tituloPaginaCartoes = await screen.findByText('Meus cartões');
+    expect(tituloPaginaCartoes).toBeInTheDocument();
   });
 });
