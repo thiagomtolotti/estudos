@@ -5,13 +5,15 @@ export async function buscaSaldo() {
     const resp = await api.get('/saldo');
     return resp.data.valor;
   } catch (err) {
-    return 1000;
+    return null;
   }
 }
 
 export async function atualizaSaldo(novoSaldo) {
-  api
-    .put('/saldo', { valor: novoSaldo })
-    .then((resp) => console.log(resp.status))
-    .catch((err) => console.log(err));
+  try {
+    const resp = await api.put('/saldo', { valor: novoSaldo });
+    console.log(resp.status);
+  } catch (err) {
+    throw new Error(err);
+  }
 }
