@@ -9,6 +9,7 @@ export default function useSaldo() {
   }
 
   useEffect(() => {
+    // Teste
     obtemSaldo();
   }, [saldo]);
 
