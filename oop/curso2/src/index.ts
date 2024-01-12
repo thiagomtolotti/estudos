@@ -1,16 +1,16 @@
 import Cliente from "./Cliente";
 import ContaCorrente from "./ContaCorrente";
+import ContaPoupanca from "./ContaPoupanca";
 
 // Instâncias
-const cliente1 = new Cliente("Ricardo", 10555789789, 15199);
-const cliente2 = new Cliente("Alice", 8887897898, 15199);
+const cliente1 = new Cliente("Ricardo", 10555789789);
+const contaCorrenteRicardo = new ContaCorrente(cliente1, 15199);
 
 console.clear();
 
-cliente1.contaCorrente.depositar(1000);
-cliente1.contaCorrente.transferir(-500, cliente2.contaCorrente);
+contaCorrenteRicardo.depositar(1000);
+contaCorrenteRicardo.sacar(1000);
 
-console.log(cliente1.contaCorrente.saldo);
-console.log(cliente2.contaCorrente.saldo);
+const contaPoupancaRicardo = new ContaPoupanca(5000, cliente1, 15199);
 
-console.log(ContaCorrente.numeroDeContas);
+console.log(contaPoupancaRicardo.transferir(500, contaCorrenteRicardo));
