@@ -5,12 +5,11 @@ import ContaPoupanca from "./ContaPoupanca";
 // Instâncias
 const cliente1 = new Cliente("Ricardo", 10555789789);
 const contaCorrenteRicardo = new ContaCorrente(cliente1, 15199);
+const contaPoupancaRicardo = new ContaPoupanca(5000, cliente1, 15199);
 
 console.clear();
 
 contaCorrenteRicardo.depositar(1000);
-contaCorrenteRicardo.sacar(1000);
+contaCorrenteRicardo.transferir(1000, contaCorrenteRicardo);
 
-const contaPoupancaRicardo = new ContaPoupanca(5000, cliente1, 15199);
-
-console.log(contaPoupancaRicardo.transferir(500, contaCorrenteRicardo));
+console.log(ContaCorrente.numeroDeContas);

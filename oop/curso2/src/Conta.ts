@@ -41,6 +41,13 @@ export default abstract class Conta {
 
 	// Composição de classes
 	public transferir(valor: number, conta: Conta) {
+		if (conta === this) {
+			console.error(
+				"Não é possível realizar uma transferência para a mesma conta"
+			);
+			return;
+		}
+
 		const valorSacado = this.sacar(valor);
 
 		valorSacado && conta.depositar(valorSacado);
