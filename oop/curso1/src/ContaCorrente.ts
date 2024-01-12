@@ -1,3 +1,5 @@
+import { checkValue } from "./decorators/checkValue";
+
 export default class ContaCorrente {
   private _agencia: number;
   private _saldo: number;
@@ -15,24 +17,15 @@ export default class ContaCorrente {
     return this._saldo;
   }
 
+  @checkValue()
   public depositar(valor: number): number {
-    if (valor < 0) {
-      console.error("Não é possível depositar um valor negativo");
-
-      return 0;
-    }
-
     this._saldo += valor;
 
     return valor;
   }
 
+  @checkValue()
   public sacar(valor: number): number {
-    if (valor < 0) {
-      console.error("Não é possível sacar um valor negativo");
-      return 0;
-    }
-
     if (this._saldo - valor < 0) {
       console.error(
         "Não é possível sacar o valor pois não há saldo disponível"
@@ -44,5 +37,12 @@ export default class ContaCorrente {
     this._saldo -= valor;
 
     return valor;
+  }
+
+  // Composição de classes
+  public transferir(valor: number, conta: ContaCorrente) {
+    const valorSacado = this.sacar(valor);
+
+    valorSacado && conta.depositar(valorSacado);
   }
 }

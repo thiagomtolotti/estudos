@@ -1,4 +1,4 @@
-import ContaCorrente from "./conta_corrente";
+import ContaCorrente from "./ContaCorrente";
 
 export default class Cliente {
   // Propriedades
