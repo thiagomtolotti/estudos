@@ -1,12 +1,15 @@
 import { checkValue } from "./decorators/checkValue";
 
 export default class ContaCorrente {
+  public static numeroDeContas: number = 0;
   private _agencia: number;
   private _saldo: number;
 
   constructor(agencia: number) {
     this._agencia = agencia;
     this._saldo = 0;
+
+    ContaCorrente.numeroDeContas += 1;
   }
 
   public get agencia() {

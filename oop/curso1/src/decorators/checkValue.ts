@@ -11,7 +11,7 @@ export function checkValue() {
 
       if (value < 0) {
         console.error(
-          "Não é possível realizar essa operação com um valor negativo"
+          `Não é possível realizar a operação ${propertyKey} com um valor negativo`
         );
 
         return;

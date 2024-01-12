@@ -1,4 +1,5 @@
 import Cliente from "./Cliente";
+import ContaCorrente from "./ContaCorrente";
 
 // Instâncias
 const cliente1 = new Cliente("Ricardo", 10555789789, 15199);
@@ -11,4 +12,5 @@ cliente1.contaCorrente.transferir(-500, cliente2.contaCorrente);
 
 console.log(cliente1.contaCorrente.saldo);
 console.log(cliente2.contaCorrente.saldo);
-// console.log(cliente2);
+
+console.log(ContaCorrente.numeroDeContas);
