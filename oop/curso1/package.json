@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.0.2",
+    "typescript": "^5.3.3"
+  },
+  "scripts": {
+    "watch": "concurrently \"tsc --watch\" \"nodemon dist/index.js\""
+  }
+}
