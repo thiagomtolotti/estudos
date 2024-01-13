@@ -1,4 +1,4 @@
-import Cliente from "./Cliente";
+import Cliente from "../Cliente";
 import Conta from "./Conta";
 
 export class ContaSalario extends Conta {

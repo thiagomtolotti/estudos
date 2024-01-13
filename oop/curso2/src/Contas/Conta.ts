@@ -1,6 +1,6 @@
-import Cliente from "./Cliente";
+import Cliente from "../Cliente";
 
-import { checkValue } from "./decorators/checkValue";
+import { checkValue } from "../decorators/checkValue";
 
 export default abstract class Conta {
   private _saldo: number;
