@@ -1,13 +1,13 @@
 import Cliente from "./Cliente";
 import Conta from "./Conta";
 
-export default class ContaPoupanca extends Conta {
-  constructor(saldoInicial: number, cliente: Cliente, agencia: number) {
-    super(saldoInicial, cliente, agencia);
+export class ContaSalario extends Conta {
+  constructor(cliente: Cliente) {
+    super(0, cliente, 100);
   }
 
   public sacar(valor: number): number {
-    const taxa = 1.02;
+    const taxa = 1.2;
     const valorSacado = valor * taxa;
 
     return super.handleSacar(valorSacado);

@@ -14,7 +14,7 @@ export default class ContaCorrente extends Conta {
     const taxa = 1.1;
     const valorSacado = valor * taxa;
 
-    return super.sacar(valorSacado);
+    return super.handleSacar(valorSacado);
   }
 
   teste() {

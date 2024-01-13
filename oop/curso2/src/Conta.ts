@@ -24,8 +24,10 @@ export default abstract class Conta {
     return valor;
   }
 
+  protected abstract sacar(valor: number): number;
+
   @checkValue()
-  public sacar(valor: number): number {
+  protected handleSacar(valor: number): number {
     if (this._saldo - valor < 0) {
       console.error(
         "Não é possível sacar o valor pois não há saldo disponível"
