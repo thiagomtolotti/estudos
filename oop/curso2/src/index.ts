@@ -10,6 +10,7 @@ const contaPoupancaRicardo = new ContaPoupanca(5000, cliente1, 15199);
 console.clear();
 
 contaCorrenteRicardo.depositar(1000);
-contaCorrenteRicardo.transferir(1000, contaCorrenteRicardo);
+contaCorrenteRicardo.sacar(500);
+console.log(contaCorrenteRicardo.saldo);
 
-console.log(ContaCorrente.numeroDeContas);
+contaCorrenteRicardo.teste();
