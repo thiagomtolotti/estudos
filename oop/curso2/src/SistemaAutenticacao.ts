@@ -2,8 +2,17 @@
 
 import { Autenticavel } from "./models/IAutenticavel";
 
-export class SistemaAutenticacao {
+export abstract class SistemaAutenticacao {
   static login(user: Autenticavel, senha: string): boolean {
+    if (!SistemaAutenticacao.ehAutenticavel) return false;
+
     return user?.autenticar(senha);
+  }
+
+  static ehAutenticavel(Autenticavel: Autenticavel) {
+    return (
+      "autenticar" in Autenticavel &&
+      Autenticavel.autenticar instanceof Function
+    );
   }
 }
