@@ -9,12 +9,12 @@ if (elementoDataAcesso != null) {
 renderizarSaldo();
 function renderizarSaldo() {
     if (elementoSaldo != null) {
-        elementoSaldo.textContent = formatarMoeda(Conta.getSaldo());
+        elementoSaldo.textContent = formatarMoeda(Conta.saldo);
     }
 }
 const SaldoComponent = {
     atualizar() {
         renderizarSaldo();
-    }
+    },
 };
 export default SaldoComponent;
