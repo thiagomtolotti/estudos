@@ -1,26 +1,35 @@
-import { useRef } from "react";
+import { FormEvent, useRef, useState } from "react";
+import { useAdicionarParticipante } from "../../state/hooks/useAdicionarParticipante";
+import { useMensagemDeErro } from "../../state/hooks/useMensagemDeErro";
 
 const Formulario = () => {
 	const inputRef = useRef<HTMLInputElement>(null);
-	const buttonRef = useRef<HTMLButtonElement>(null);
+	const [nome, setNome] = useState("");
 
-	function handleInput() {
-		if (!buttonRef.current || !inputRef.current) return;
+	const addParticipante = useAdicionarParticipante();
+	const mensagemDeErro = useMensagemDeErro();
 
-		buttonRef.current.disabled = Boolean(inputRef.current?.value);
+	function handleSubmit(ev: FormEvent) {
+		if (!inputRef.current) return;
+		ev.preventDefault();
+
+		addParticipante(nome);
+
+		setNome("");
+		inputRef.current.value = "";
+		inputRef.current.focus();
 	}
 
 	return (
-		<form action="">
+		<form onSubmit={handleSubmit}>
 			<input
 				type="text"
 				placeholder="Insira os nomes dos participantes"
 				ref={inputRef}
-				onInput={handleInput}
+				onChange={(ev) => setNome(ev.target.value)}
 			/>
-			<button disabled ref={buttonRef}>
-				Adicionar
-			</button>
+			<button disabled={!nome}>Adicionar</button>
+			{mensagemDeErro && <p role="alert">{mensagemDeErro}</p>}
 		</form>
 	);
 };
