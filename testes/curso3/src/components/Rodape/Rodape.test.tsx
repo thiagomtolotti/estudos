@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import React from "react";
 import { RecoilRoot } from "recoil";
-import { Rodape } from "./Rodape";
+import Rodape from "./Rodape";
 import { useListaDeParticipantes } from "../../state/hooks/useListaDeParticipantes";
 
 jest.mock("../../state/hooks/useListaDeParticipantes", () => {
@@ -19,6 +19,9 @@ jest.mock("react-router-dom", () => {
 });
 
 describe("Onde não existem participantes suficientes", () => {
+  beforeEach(() => {
+    (useListaDeParticipantes as jest.Mock).mockReturnValue([]);
+  });
   test("A brincadeira não pode ser iniciada", () => {
     render(
       <RecoilRoot>
@@ -64,5 +67,6 @@ describe("Onde existem participantes suficientes", () => {
     fireEvent.click(botao);
 
     expect(mockNavegacao).toHaveBeenCalledTimes(1);
+    expect(mockNavegacao).toHaveBeenCalledWith("/sorteio");
   });
 });

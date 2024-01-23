@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useListaDeParticipantes } from "../../state/hooks/useListaDeParticipantes";
 
-export const Rodape = () => {
-  const participantes = useListaDeParticipantes();
+const Rodape = () => {
+  const participantes: string[] = useListaDeParticipantes();
   const navigate = useNavigate();
 
   const iniciar = () => {
@@ -17,3 +17,5 @@ export const Rodape = () => {
     </footer>
   );
 };
+
+export default Rodape;
