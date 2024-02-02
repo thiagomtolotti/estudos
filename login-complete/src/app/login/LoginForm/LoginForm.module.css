@@ -1,0 +1,16 @@
+.loginForm {
+	display: flex;
+	flex-direction: column;
+
+	gap: 12px;
+}
+
+.rememberMe {
+	display: flex;
+	gap: 12px;
+}
+
+.rememberMe label {
+	cursor: pointer;
+	margin: auto 0 12px;
+}
