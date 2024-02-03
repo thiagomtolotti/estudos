@@ -39,6 +39,8 @@ exports[`Login Page Should render correctly 1`] = `
     </form>
     <button
       class="button-clear"
+      data-testid="forgot-password"
+      href="/login/forgotPassword"
     >
       Esqueci minha senha
     </button>

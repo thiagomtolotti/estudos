@@ -1,15 +1,18 @@
+import Link from "next/link";
 import styles from "./login.module.css";
 
 import LoginForm from "./LoginForm";
 
 export default function Login() {
-	return (
-		<div className={styles.login}>
-			<h1>Login</h1>
+  return (
+    <div className={styles.login}>
+      <h1>Login</h1>
 
-			<LoginForm />
+      <LoginForm />
 
-			<button className="button-clear">Esqueci minha senha</button>
-		</div>
-	);
+      <Link href={"/login/forgotPassword"} data-testid="forgot-password">
+        <button className="button-clear">Esqueci minha senha</button>
+      </Link>
+    </div>
+  );
 }
