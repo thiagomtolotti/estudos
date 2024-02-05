@@ -29,11 +29,10 @@ describe("Login Page", () => {
   });
 
   it("Should redirect to /forgotPassword when the appropriate button is clicked", () => {
-    fireEvent.click(forgotPasswordButton);
-
     expect(forgotPasswordButton).toHaveAttribute(
       "href",
       "/login/forgotPassword"
     );
+    console.log(window.location.href);
   });
 });

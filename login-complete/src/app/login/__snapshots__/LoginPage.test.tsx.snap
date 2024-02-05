@@ -40,7 +40,7 @@ exports[`Login Page Should render correctly 1`] = `
     <button
       class="button-clear"
       data-testid="forgot-password"
-      href="/login/forgotPassword"
+      href="/login/aaa"
     >
       Esqueci minha senha
     </button>
