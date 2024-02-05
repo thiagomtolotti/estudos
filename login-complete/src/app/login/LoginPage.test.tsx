@@ -1,38 +1,37 @@
 import {
-  RenderResult,
-  fireEvent,
-  render,
-  screen,
+	RenderResult,
+	fireEvent,
+	render,
+	screen,
 } from "@testing-library/react";
 import Login from "./page";
 import React, { ReactElement } from "react";
 
 jest.mock(
-  "next/link",
-  () =>
-    ({ children, ...rest }: { children: ReactElement }) =>
-      React.cloneElement(children, { ...rest })
+	"next/link",
+	() =>
+		({ children, ...rest }: { children: ReactElement }) =>
+			React.cloneElement(children, { ...rest })
 );
 
 describe("Login Page", () => {
-  let container: RenderResult;
-  let forgotPasswordButton: HTMLButtonElement;
+	let container: RenderResult;
+	let forgotPasswordButton: HTMLButtonElement;
 
-  beforeEach(() => {
-    container = render(<Login />);
+	beforeEach(() => {
+		container = render(<Login />);
 
-    forgotPasswordButton = screen.getByTestId("forgot-password");
-  });
+		forgotPasswordButton = screen.getByTestId("forgot-password");
+	});
 
-  it("Should render correctly", () => {
-    expect(container.container).toMatchSnapshot();
-  });
+	it("Should render correctly", () => {
+		expect(container.container).toMatchSnapshot();
+	});
 
-  it("Should redirect to /forgotPassword when the appropriate button is clicked", () => {
-    expect(forgotPasswordButton).toHaveAttribute(
-      "href",
-      "/login/forgotPassword"
-    );
-    console.log(window.location.href);
-  });
+	it("Should redirect to /forgotPassword when the appropriate button is clicked", () => {
+		expect(forgotPasswordButton).toHaveAttribute(
+			"href",
+			"/login/forgotPassword"
+		);
+	});
 });
