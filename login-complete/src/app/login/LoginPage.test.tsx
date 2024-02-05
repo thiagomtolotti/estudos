@@ -1,9 +1,4 @@
-import {
-	RenderResult,
-	fireEvent,
-	render,
-	screen,
-} from "@testing-library/react";
+import { RenderResult, render, screen } from "@testing-library/react";
 import Login from "./page";
 import React, { ReactElement } from "react";
 
