@@ -33,7 +33,7 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
 	return (
 		<form onSubmit={handleSubmit} className={styles.loginForm}>
 			<input type="email" placeholder="email" ref={emailRef} />
-			<input type="text" placeholder="senha" ref={passRef} />
+			<input type="password" placeholder="senha" ref={passRef} />
 
 			<span className={styles.rememberMe}>
 				<input

@@ -17,7 +17,7 @@ exports[`Login Page Should render correctly 1`] = `
       />
       <input
         placeholder="senha"
-        type="text"
+        type="password"
       />
       <span
         class="rememberMe"
