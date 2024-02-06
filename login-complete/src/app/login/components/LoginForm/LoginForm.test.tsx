@@ -27,6 +27,10 @@ describe("LoginForm", () => {
 		expect(rememberMeCheckbox).toBeInTheDocument();
 	});
 
+	it("Should not show the password", () => {
+		expect(passInput).toHaveAttribute("type", "password");
+	});
+
 	describe("onSubmit function", () => {
 		const mockUserName = "test@test.com";
 		const mockPassword = "pass-test";

@@ -4,6 +4,7 @@ import ChangePasswordForm from ".";
 describe("ChangePasswordForm", () => {
 	let newPassInput: HTMLInputElement,
 		confirmNewPassInput: HTMLInputElement,
+		showPass: HTMLInputElement,
 		sendButton: HTMLButtonElement;
 	const onSubmitMock = jest.fn();
 
@@ -15,6 +16,7 @@ describe("ChangePasswordForm", () => {
 			"Confirme a nova senha"
 		);
 		sendButton = screen.getByRole("button");
+		showPass = screen.getByTestId("show-pass");
 	});
 
 	it("Should contain a new password field, a confirm field and a button to change the password", () => {
@@ -46,7 +48,7 @@ describe("ChangePasswordForm", () => {
 		expect(onSubmitMock).not.toHaveBeenCalled();
 	});
 
-	it("Should send the result only if the passwords are not empty and equal", () => {
+	it("Should change the password only if the passwords are not empty and equal", () => {
 		const newPassword = "123456";
 
 		fireEvent.input(newPassInput, { target: { value: newPassword } });
@@ -58,5 +60,19 @@ describe("ChangePasswordForm", () => {
 
 		expect(onSubmitMock).toHaveBeenCalledTimes(1);
 		expect(onSubmitMock).toHaveBeenCalledWith(newPassword);
+	});
+
+	it("Should not show the password by default", () => {
+		expect(newPassInput).toHaveAttribute("type", "password");
+		expect(confirmNewPassInput).toHaveAttribute("type", "password");
+	});
+
+	it("Should allow the user to see the passwords", () => {
+		expect(showPass).toBeInTheDocument();
+
+		fireEvent.click(showPass);
+
+		expect(newPassInput).toHaveAttribute("type", "text");
+		expect(confirmNewPassInput).toHaveAttribute("type", "text");
 	});
 });
