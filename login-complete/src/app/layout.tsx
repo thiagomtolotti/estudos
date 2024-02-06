@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Head from "next/head";
 import { Inter } from "next/font/google";
 
 import "normalize.css";
@@ -18,7 +17,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
+		<html lang="pt-br">
 			<head>
 				<link
 					rel="stylesheet"
