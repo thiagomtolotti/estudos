@@ -1,3 +1,4 @@
+import styles from "./ChangePasswordForm.module.css";
 import { FormEvent, useRef, useState } from "react";
 
 interface ChangePasswordFormProps {
@@ -42,7 +43,7 @@ export const ChangePasswordForm = ({ onSubmit }: ChangePasswordFormProps) => {
 				autoComplete="new-password"
 			/>
 
-			<span>
+			<span className={styles.showPass}>
 				<input
 					type="checkbox"
 					name="show-pass"
