@@ -33,11 +33,13 @@ export const ChangePasswordForm = ({ onSubmit }: ChangePasswordFormProps) => {
 				type={showPass ? "text" : "password"}
 				placeholder="Nova senha"
 				ref={newPassRef}
+				autoComplete="new-password"
 			/>
 			<input
 				type={showPass ? "text" : "password"}
 				placeholder="Confirme a nova senha"
 				ref={confirmNewPassRef}
+				autoComplete="new-password"
 			/>
 
 			<span>
@@ -46,9 +48,10 @@ export const ChangePasswordForm = ({ onSubmit }: ChangePasswordFormProps) => {
 					name="show-pass"
 					id="show-pass"
 					data-testid="show-pass"
-					onInput={(ev) =>
-						setShowPass((ev.target as HTMLInputElement).checked)
-					}
+					checked={showPass}
+					onChange={() => {
+						setShowPass((showPass) => !showPass);
+					}}
 				/>
 				<label htmlFor="show-pass">Mostrar as senhas</label>
 			</span>

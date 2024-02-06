@@ -1,17 +1,11 @@
-"use client";
-
 import styles from "./LoginForm.module.css";
 import { FormEvent, useRef } from "react";
 
 interface LoginFormProps {
-	onSubmit: (
-		username: string,
-		password: string,
-		rememberUser: boolean
-	) => void;
+	submit: (username: string, password: string, rememberUser: boolean) => void;
 }
 
-export const LoginForm = ({ onSubmit }: LoginFormProps) => {
+export const LoginForm = ({ submit }: LoginFormProps) => {
 	const emailRef = useRef<HTMLInputElement>(null);
 	const passRef = useRef<HTMLInputElement>(null);
 	const rememberMe = useRef<HTMLInputElement>(null);
@@ -27,7 +21,7 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
 			return;
 		}
 
-		onSubmit(emailValue, passValue, Boolean(rememberMe.current?.checked));
+		submit(emailValue, passValue, Boolean(rememberMe.current?.checked));
 	}
 
 	return (

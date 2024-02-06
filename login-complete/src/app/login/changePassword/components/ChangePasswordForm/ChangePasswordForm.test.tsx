@@ -67,12 +67,17 @@ describe("ChangePasswordForm", () => {
 		expect(confirmNewPassInput).toHaveAttribute("type", "password");
 	});
 
-	it("Should allow the user to see the passwords", () => {
+	it("Should allow the user to toggle the passwords visibility", () => {
 		expect(showPass).toBeInTheDocument();
 
 		fireEvent.click(showPass);
 
 		expect(newPassInput).toHaveAttribute("type", "text");
 		expect(confirmNewPassInput).toHaveAttribute("type", "text");
+
+		fireEvent.click(showPass);
+
+		expect(newPassInput).toHaveAttribute("type", "password");
+		expect(confirmNewPassInput).toHaveAttribute("type", "password");
 	});
 });

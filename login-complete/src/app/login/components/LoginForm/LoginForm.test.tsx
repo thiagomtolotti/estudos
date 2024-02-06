@@ -9,7 +9,7 @@ describe("LoginForm", () => {
 	const mockSubmit = jest.fn();
 
 	beforeEach(() => {
-		render(<LoginForm onSubmit={mockSubmit} />);
+		render(<LoginForm submit={mockSubmit} />);
 
 		emailInput = screen.getByPlaceholderText("email");
 		passInput = screen.getByPlaceholderText("senha");
