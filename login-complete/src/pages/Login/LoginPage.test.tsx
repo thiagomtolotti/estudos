@@ -1,5 +1,5 @@
 import { RenderResult, render, screen } from "@testing-library/react";
-import Login from "./page";
+import { LoginPage } from "./LoginPage";
 import React, { ReactElement } from "react";
 
 jest.mock(
@@ -14,7 +14,7 @@ describe("Login Page", () => {
 	let forgotPasswordButton: HTMLButtonElement;
 
 	beforeEach(() => {
-		container = render(<Login />);
+		container = render(<LoginPage />);
 
 		forgotPasswordButton = screen.getByTestId("forgot-password");
 	});

@@ -4,7 +4,7 @@ import {
 	RenderResult,
 	screen,
 } from "@testing-library/react";
-import ChangePasswordPage from "./page";
+import { ChangePasswordPage } from "./ChangePasswordPage";
 
 describe("Change Password page", () => {
 	let newPassInput: HTMLInputElement,
