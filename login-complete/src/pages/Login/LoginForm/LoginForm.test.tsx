@@ -1,15 +1,20 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import LoginForm from ".";
+import { useLogin } from "../../../hooks/useLogin";
+
+jest.mock("../../../hooks/useLogin");
 
 describe("LoginForm", () => {
 	let emailInput: HTMLInputElement,
 		passInput: HTMLInputElement,
 		sendBtn: HTMLButtonElement,
 		rememberMeCheckbox: HTMLInputElement;
-	const mockSubmit = jest.fn();
+	const mockUseLogin = jest.fn();
 
 	beforeEach(() => {
-		render(<LoginForm submit={mockSubmit} />);
+		(useLogin as jest.Mock).mockReturnValue(mockUseLogin);
+
+		render(<LoginForm />);
 
 		emailInput = screen.getByPlaceholderText("email");
 		passInput = screen.getByPlaceholderText("senha");
@@ -38,7 +43,7 @@ describe("LoginForm", () => {
 		it("Should not be called if the inputs are empty", () => {
 			fireEvent.click(sendBtn);
 
-			expect(mockSubmit).not.toHaveBeenCalled();
+			expect(mockUseLogin).not.toHaveBeenCalled();
 		});
 
 		it("Should not be called if the password is empty", () => {
@@ -46,7 +51,7 @@ describe("LoginForm", () => {
 
 			fireEvent.click(sendBtn);
 
-			expect(mockSubmit).not.toHaveBeenCalled();
+			expect(mockUseLogin).not.toHaveBeenCalled();
 		});
 
 		it("Should not be called if the username is empty", () => {
@@ -54,7 +59,7 @@ describe("LoginForm", () => {
 
 			fireEvent.click(sendBtn);
 
-			expect(mockSubmit).not.toHaveBeenCalled();
+			expect(mockUseLogin).not.toHaveBeenCalled();
 		});
 
 		it("Should not be called if the 'user' input is not an email", () => {
@@ -65,7 +70,7 @@ describe("LoginForm", () => {
 
 			fireEvent.click(sendBtn);
 
-			expect(mockSubmit).not.toHaveBeenCalled();
+			expect(mockUseLogin).not.toHaveBeenCalled();
 		});
 
 		it("Should be called if the inputs are filled correctly", () => {
@@ -74,7 +79,7 @@ describe("LoginForm", () => {
 
 			fireEvent.click(sendBtn);
 
-			expect(mockSubmit).toHaveBeenCalledWith(
+			expect(mockUseLogin).toHaveBeenCalledWith(
 				mockUserName,
 				mockPassword,
 				false
@@ -88,11 +93,15 @@ describe("LoginForm", () => {
 
 			fireEvent.click(sendBtn);
 
-			expect(mockSubmit).toHaveBeenCalledWith(
+			expect(mockUseLogin).toHaveBeenCalledWith(
 				mockUserName,
 				mockPassword,
 				true
 			);
 		});
+	});
+
+	afterEach(() => {
+		jest.clearAllMocks();
 	});
 });

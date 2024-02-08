@@ -1,14 +1,13 @@
+import { useLogin } from "@/hooks/useLogin";
 import styles from "./LoginForm.module.css";
 import { FormEvent, useRef } from "react";
 
-interface LoginFormProps {
-	submit: (username: string, password: string, rememberUser: boolean) => void;
-}
-
-export const LoginForm = ({ submit }: LoginFormProps) => {
+export const LoginForm = () => {
 	const emailRef = useRef<HTMLInputElement>(null);
 	const passRef = useRef<HTMLInputElement>(null);
 	const rememberMe = useRef<HTMLInputElement>(null);
+
+	const submit = useLogin();
 
 	function handleSubmit(ev: FormEvent) {
 		ev.preventDefault();
@@ -17,7 +16,7 @@ export const LoginForm = ({ submit }: LoginFormProps) => {
 		const passValue = passRef.current?.value;
 
 		if (!emailValue || !passValue) {
-			console.error("É necessário fornecer um email e senha válidos");
+			console.error("É necessário fornecer um email e senha");
 			return;
 		}
 
