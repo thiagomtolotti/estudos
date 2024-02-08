@@ -12,7 +12,7 @@ export function LoginPage() {
 
 			<LoginForm />
 
-			<Link href={"/login/forgotPassword"} data-testid="forgot-password">
+			<Link href={"/forgotPassword"} data-testid="forgot-password">
 				<button className="button-clear">Esqueci minha senha</button>
 			</Link>
 		</div>
