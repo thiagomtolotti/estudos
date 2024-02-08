@@ -4,11 +4,16 @@ import { useState } from "react";
 import ChangePasswordForm from "./ChangePasswordForm";
 import styles from "./ChangePasswordPage.module.css";
 import ChangePasswordConfirm from "./ChangePasswordConfirm";
+import { useChangePassword } from "@/hooks/useChangePassword";
 
 export function ChangePasswordPage() {
 	const [hasSetNewPassword, setHasSetNewPassword] = useState(false);
 
-	function sendNewPassword() {
+	const changePassword = useChangePassword();
+
+	function sendNewPassword(newPassword: string) {
+		changePassword(newPassword);
+
 		setHasSetNewPassword(true);
 	}
 
