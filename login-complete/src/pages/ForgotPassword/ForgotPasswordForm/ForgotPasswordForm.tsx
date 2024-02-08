@@ -1,29 +1,30 @@
+import { useForgotPassword } from "@/hooks/useForgotPassword";
 import { FormEvent, useRef } from "react";
 // import styles from "./ForgotPasswordForm.module.css";
 
 interface ForgotPasswordFormProps {
-  onSubmit(email: string): void;
+	submit: (email: string) => void;
 }
 
-export const ForgotPasswordForm = ({ onSubmit }: ForgotPasswordFormProps) => {
-  const emailRef = useRef<HTMLInputElement>(null);
+export const ForgotPasswordForm = ({ submit }: ForgotPasswordFormProps) => {
+	const emailRef = useRef<HTMLInputElement>(null);
 
-  function handleSubmit(ev: FormEvent) {
-    ev.preventDefault();
+	function handleSubmit(ev: FormEvent) {
+		ev.preventDefault();
 
-    if (!emailRef.current?.value) {
-      console.error("Insira um endereço de email");
-      return;
-    }
+		if (!emailRef.current?.value) {
+			console.error("Insira um endereço de email");
+			return;
+		}
 
-    onSubmit(emailRef.current.value);
-  }
+		submit(emailRef.current.value);
+	}
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <input type="email" placeholder="email" ref={emailRef} />
+	return (
+		<form onSubmit={handleSubmit}>
+			<input type="email" placeholder="email" ref={emailRef} />
 
-      <button>Enviar</button>
-    </form>
-  );
+			<button>Enviar</button>
+		</form>
+	);
 };
