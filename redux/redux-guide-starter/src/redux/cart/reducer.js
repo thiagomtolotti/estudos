@@ -5,6 +5,18 @@ const initialState = {
 	totalPrice: 0,
 };
 
+const removeProductFromList = (list, id) => {
+	return list.filter((product) => product.id !== id);
+};
+
+const increaseProductQuantity = (list, id) => {
+	return list.map((product) =>
+		product.id === id
+			? { ...product, quantity: product.quantity + 1 }
+			: product
+	);
+};
+
 const cartReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case CartActionTypes.ADD_PRODUCT:
@@ -15,10 +27,9 @@ const cartReducer = (state = initialState, action) => {
 			if (isProductAlreadyInCart) {
 				return {
 					...state,
-					products: state.products.map((product) =>
-						product.id === action.payload.id
-							? { ...product, quantity: product.quantity + 1 }
-							: product
+					products: increaseProductQuantity(
+						state.products,
+						action.payload.id
 					),
 				};
 			}
@@ -34,8 +45,39 @@ const cartReducer = (state = initialState, action) => {
 		case CartActionTypes.REMOVE_PRODUCT:
 			return {
 				...state,
-				products: state.products.filter(
-					(product) => product.id !== action.payload
+				products: removeProductFromList(state.products, action.payload),
+			};
+
+		case CartActionTypes.INCREASE_PRODUCT:
+			return {
+				...state,
+				products: increaseProductQuantity(
+					state.products,
+					action.payload
+				),
+			};
+
+		case CartActionTypes.DECREASE_PRODUCT:
+			const numberOfProductInCart = state.products.find(
+				(product) => product.id === action.payload
+			).quantity;
+
+			if (numberOfProductInCart === 1) {
+				return {
+					...state,
+					products: removeProductFromList(
+						state.products,
+						action.payload
+					),
+				};
+			}
+
+			return {
+				...state,
+				products: state.products.map((product) =>
+					product.id === action.payload
+						? { ...product, quantity: product.quantity - 1 }
+						: product
 				),
 			};
 
