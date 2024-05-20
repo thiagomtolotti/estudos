@@ -1,3 +1,0 @@
-Builder pattern
-
-- Útil quando se tem objetos com muitos campos obrigatórios e opcionais
