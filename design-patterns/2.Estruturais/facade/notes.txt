@@ -1,6 +1,0 @@
-Facade
-
-- Torna o código mais fácil de refatorar no futuro
-- Cria uma fachada entre o código complexo e as regras de negócio
-- exemplo: trocar fetch por axios
-	- Torna mais fácil de usar o fetch e de realizar a troca no futuro
