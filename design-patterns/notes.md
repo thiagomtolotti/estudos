@@ -11,5 +11,5 @@
 
 ## Referências
 
-- [Fireship - 10 Design Patterns Explained in 10 Minutes
-  ](https://www.youtube.com/watch?v=tv-_1er1mWI)
+- [Fireship - 10 Design Patterns Explained in 10 Minutes](https://www.youtube.com/watch?v=tv-_1er1mWI)
+- [Refactoring Guru - Design Patterns](https://refactoring.guru/design-patterns)
