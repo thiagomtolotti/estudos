@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "types": ["node"],
-    "typeRoots": ["./node_modules/@types"],
+    "typeRoots": ["node_modules/@types"],
     "strict": true,
     "target": "ES5",
     "module": "CommonJS",
@@ -10,9 +10,9 @@
     "experimentalDecorators": true,
     "resolveJsonModule": true,
     "declaration": false,
-    "outDir": "dist/",
-    "rootDir": "src/",
+    "outDir": "dist",
+    "rootDir": "src",
     "noEmitOnError": true
   },
-  "include": ["src/"]
+  "include": ["src"]
 }
